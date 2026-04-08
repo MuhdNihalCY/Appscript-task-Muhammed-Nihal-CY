@@ -21,21 +21,6 @@
     transform: scale(1.04);
 }
 
-.wishlist {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 1.2rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: none;
-}
-
-.imageWrapper:hover .wishlist {
-    display: block;
-}
-
 .info {
     display: flex;
     flex-direction: column;

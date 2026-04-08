@@ -17,21 +17,11 @@ export default function ProductCard({ product, priority = false }) {
                     src={product.image}
                     alt={product.title}
                     fill
-                    sizes="(max-width: 768px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 33vw"
                     className={styles.image}
                     priority={priority}
                     loading={priority ? "eager" : "lazy"}
                 />
-                <button
-                    className={styles.wishlist}
-                    onClick={() => setWishlisted(!wishlisted)}
-                    aria-label={
-                        wishlisted ? "Remove from wishlist" : "Add to wishlist"
-                    }
-                >
-                    {wishlisted ? "♥" : "♡"}{" "}
-                    {/* need to replace with icons later */}
-                </button>
             </div>
 
             <div className={styles.info}>
@@ -42,7 +32,6 @@ export default function ProductCard({ product, priority = false }) {
                         onClick={() => setWishlisted(!wishlisted)}
                         aria-label="Wishlist"
                     >
-                        {/* {wishlisted ? '♥' : '♡'} */}
                         <Image
                             src={wishlisted ? heartFilled : heart}
                             alt={

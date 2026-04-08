@@ -151,6 +151,17 @@
     letter-spacing: 0.08em;
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gridExpanded {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
     .wrapper {

@@ -74,6 +74,15 @@
     font-weight: 600;
 }
 
+.collapsedSummary {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.35rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .allBtn {
     font-size: 0.8rem;
     letter-spacing: 0.03em;

@@ -17,7 +17,7 @@ const FILTERS = [
 
 function FilterGroup({ label, options }) {
     const [open, setOpen] = useState(false);
-    const [selected, setSelected] = useState([]);
+    const [selected, setSelected] = useState([...options]);
 
     if (options.length === 0) {
         return (
@@ -52,6 +52,11 @@ function FilterGroup({ label, options }) {
                 <span>{label}</span>
                 <span className={styles.chevron}>{open ? "∧" : "∨"}</span>
             </button>
+            {!open && selected.length > 0 && (
+                <p className={styles.collapsedSummary}>
+                    {allSelected ? "All" : selected.join(", ")}
+                </p>
+            )}
             {open && (
                 <ul className={styles.options}>
                     {/* All — no checkbox, click selects all */}

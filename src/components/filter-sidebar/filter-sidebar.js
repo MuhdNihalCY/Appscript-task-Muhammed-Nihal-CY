@@ -5,28 +5,40 @@ import styles from "./filter-sidebar.module.css";
 
 const FILTERS = [
     { label: "CUSTOMIZABLE", options: [] },
-    { label: "IDEAL FOR", options: ["All", "Men", "Women", "Kids"] },
-    { label: "OCCASION", options: ["All", "Casual", "Formal", "Work"] },
-    { label: "WORK", options: ["All", "Office", "Remote"] },
-    { label: "FABRIC", options: ["All", "Cotton", "Leather", "Recycled"] },
-    { label: "SEGMENT", options: ["All", "Premium", "Budget"] },
-    { label: "SUITABLE FOR", options: ["All", "Travel", "Daily Use"] },
-    { label: "RAW MATERIALS", options: ["All", "Organic", "Synthetic"] },
-    { label: "PATTERN", options: ["All", "Solid", "Striped", "Printed"] },
+    { label: "IDEAL FOR", options: ["Men", "Women", "Kids"] },
+    { label: "OCCASION", options: ["Casual", "Formal", "Work"] },
+    { label: "WORK", options: ["Office", "Remote"] },
+    { label: "FABRIC", options: ["Cotton", "Leather", "Recycled"] },
+    { label: "SEGMENT", options: ["Premium", "Budget"] },
+    { label: "SUITABLE FOR", options: ["Travel", "Daily Use"] },
+    { label: "RAW MATERIALS", options: ["Organic", "Synthetic"] },
+    { label: "PATTERN", options: ["Solid", "Striped", "Printed"] },
 ];
 
 function FilterGroup({ label, options }) {
     const [open, setOpen] = useState(false);
-    const [selected, setSelected] = useState("All");
+    const [selected, setSelected] = useState([]);
 
     if (options.length === 0) {
         return (
             <div className={styles.group}>
                 <label className={styles.checkboxLabel}>
-                    <input type="checkbox" />
+                    <input type="checkbox" className={styles.checkbox} />
                     <span>{label}</span>
                 </label>
             </div>
+        );
+    }
+
+    const allSelected = selected.length === options.length;
+
+    function toggleAll() {
+        setSelected(allSelected ? [] : [...options]);
+    }
+
+    function toggleOption(opt) {
+        setSelected((prev) =>
+            prev.includes(opt) ? prev.filter((o) => o !== opt) : [...prev, opt]
         );
     }
 
@@ -38,17 +50,46 @@ function FilterGroup({ label, options }) {
                 aria-expanded={open}
             >
                 <span>{label}</span>
-                <span>{open ? "∧" : "∨"}</span>
+                <span className={styles.chevron}>{open ? "∧" : "∨"}</span>
             </button>
             {open && (
                 <ul className={styles.options}>
-                    {options.map((opt) => (
-                        <li
-                            key={opt}
-                            className={opt === selected ? styles.selected : ""}
-                            onClick={() => setSelected(opt)}
+                    {/* All — no checkbox, click selects all */}
+                    <li>
+                        <button
+                            className={`${styles.allBtn} ${allSelected ? styles.optionSelected : styles.optionMuted}`}
+                            onClick={toggleAll}
                         >
-                            {opt}
+                            All
+                        </button>
+                    </li>
+
+                    {/* Unselect all — only visible when something is selected */}
+                    {selected.length > 0 && (
+                        <li>
+                            <button
+                                className={styles.unselectAll}
+                                onClick={() => setSelected([])}
+                            >
+                                Unselect all
+                            </button>
+                        </li>
+                    )}
+
+                    {/* Individual options with checkboxes */}
+                    {options.map((opt) => (
+                        <li key={opt}>
+                            <label className={styles.optionLabel}>
+                                <input
+                                    type="checkbox"
+                                    className={styles.checkbox}
+                                    checked={selected.includes(opt)}
+                                    onChange={() => toggleOption(opt)}
+                                />
+                                <span className={selected.includes(opt) ? styles.optionSelected : styles.optionMuted}>
+                                    {opt}
+                                </span>
+                            </label>
                         </li>
                     ))}
                 </ul>

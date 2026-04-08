@@ -45,22 +45,45 @@
     margin-top: 0.75rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
-.options li {
+.optionLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}
+
+.optionMuted {
     font-size: 0.8rem;
     color: var(--color-muted);
-    cursor: pointer;
-    padding: 0.1rem 0;
 }
 
-.options li:hover {
-    color: var(--color-primary);
-}
-
-.options li.selected {
+.optionSelected {
+    font-size: 0.8rem;
     color: var(--color-primary);
     font-weight: 600;
+}
+
+.allBtn {
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    text-align: left;
+}
+
+.unselectAll {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    text-decoration: underline;
+    letter-spacing: 0.03em;
 }
 

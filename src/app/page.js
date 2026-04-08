@@ -1,6 +1,12 @@
 import ProductGrid from "@/components/product-grid/product-grid";
 import styles from "./page.module.css";
 
+export const metadata = {
+    title: "Discover Our Products | Metta Muse",
+    description:
+        "Browse our full collection of sustainable, handcrafted bags, backpacks and accessories. Filter by category, fabric, and occasion.",
+};
+
 async function getProducts() {
     const res = await fetch("https://fakestoreapi.com/products", {
         next: { revalidate: 3600 }, // Revalidate every hour to keep data fresh

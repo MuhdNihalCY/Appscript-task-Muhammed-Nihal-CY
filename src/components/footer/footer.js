@@ -41,7 +41,7 @@ function FooterSection({ title, links }) {
             </button>
             <ul className={`${styles.linkList} ${open ? styles.open : ""}`}>
                 {links.map((link) => (
-                    <li key={link}>
+                    <li key={`${title}-${link}`}>
                         <a href="#">{link}</a>
                     </li>
                 ))}

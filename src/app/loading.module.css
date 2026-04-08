@@ -1,0 +1,74 @@
+@keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+
+.skeletonBase {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 800px 100%;
+    animation: shimmer 1.4s infinite linear;
+    border-radius: 4px;
+}
+
+.header {
+    text-align: center;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.skeletonTitle {
+    composes: skeletonBase;
+    width: 320px;
+    height: 2rem;
+}
+
+.skeletonText {
+    composes: skeletonBase;
+    width: 480px;
+    height: 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 1rem 0 2rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.skeletonImage {
+    composes: skeletonBase;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 0;
+}
+
+.skeletonLine {
+    composes: skeletonBase;
+    width: 100%;
+    height: 0.85rem;
+}
+
+.skeletonLineShort {
+    composes: skeletonBase;
+    width: 60%;
+    height: 0.75rem;
+}
+
+@media (max-width: 1024px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .skeletonText { width: 100%; max-width: 480px; }
+}
+
+@media (max-width: 768px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .skeletonTitle { width: 200px; }
+}

@@ -35,7 +35,7 @@ export default function Navbar() {
                     </button>
                     <div className={styles.logoContainer}>
                         <a href="/" className={styles.logo}>
-                            <Image src={logo} alt="Logo" width={30} height={30} />
+                            <Image src={logo} alt="Metta Muse" width={30} height={30} />
                         </a>
                     </div>
                     <a href="/" className={`${styles.logo} ${styles.logoText}`}>
@@ -80,11 +80,13 @@ export default function Navbar() {
             </nav>
 
             {/* Breadcrumb */}
-            <div className={`${styles.breadcrumb} container`}>
-                <span className={styles.breadcrumbItemMuted}>HOME</span>
-                <span className={styles.breadcrumbItemMuted}> | </span>
-                <span className={styles.breadcrumbItem}>SHOP</span>
-            </div>
+            <nav aria-label="Breadcrumb" className={`${styles.breadcrumb} container`}>
+                <ol className={styles.breadcrumbList}>
+                    <li><a href="/" className={styles.breadcrumbItemMuted}>HOME</a></li>
+                    <li aria-hidden="true" className={styles.breadcrumbItemMuted}> | </li>
+                    <li><span className={styles.breadcrumbItem} aria-current="page">SHOP</span></li>
+                </ol>
+            </nav>
         </header>
     );
 }

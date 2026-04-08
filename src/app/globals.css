@@ -48,14 +48,31 @@ img {
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
+    padding-left: 2rem;
+    padding-right: 2rem;
     width: 100%;
 }
 
 @media (max-width: 768px) {
     .container {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
+}
+
+/* Global focus styles for keyboard navigation */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+input:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 0;
 }

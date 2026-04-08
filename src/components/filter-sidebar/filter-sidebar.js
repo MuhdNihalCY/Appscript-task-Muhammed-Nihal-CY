@@ -17,7 +17,7 @@ const FILTERS = [
 
 function FilterGroup({ label, options }) {
     const [open, setOpen] = useState(false);
-    const [selected, setSelected] = useState([...options]);
+    const [selected, setSelected] = useState([]);
 
     if (options.length === 0) {
         return (

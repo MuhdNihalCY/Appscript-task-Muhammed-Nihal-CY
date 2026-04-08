@@ -1,8 +1,17 @@
 .sidebar {
-    width: 220px;
     flex-shrink: 0;
+}
+
+.sidebarDesktop {
+    width: 220px;
     border-right: 1px solid var(--color-border);
     padding-right: 1.5rem;
+}
+
+.sidebarMobile {
+    width: 100%;
+    border-right: none;
+    padding-right: 0;
 }
 
 .group {
@@ -55,9 +64,3 @@
     font-weight: 600;
 }
 
-/* Hide sidebar on mobile */
-@media (max-width: 768px) {
-    .sidebar {
-        display: none;
-    }
-}

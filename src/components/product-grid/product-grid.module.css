@@ -29,9 +29,24 @@
     gap: 2rem;
 }
 
-.filterToggle {
+.filterToggleDesktop {
+    display: flex;
+    align-items: center;
     font-size: 0.8rem;
     letter-spacing: 0.05em;
+}
+
+.filterToggleMobile {
+    display: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+}
+
+.filterSymbol{
+    font-size: 1.2rem;
+    font-weight: 100;
+    margin-right: .5rem;
 }
 
 .filterText {
@@ -81,17 +96,26 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     flex: 1;
 }
 
-.mobileFilterBtn {
-    display: none;
+.gridExpanded {
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .desktopFilter {
-    display: block;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: max-width 0.3s ease, opacity 0.3s ease;
+}
+
+.desktopFilterOpen {
+    max-width: 260px;
+    opacity: 1;
 }
 
 .mobileDrawer {
@@ -106,6 +130,14 @@
     overflow-y: auto;
     padding: 1.5rem;
     box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    visibility: hidden;
+}
+
+.mobileDrawerOpen {
+    transform: translateX(0);
+    visibility: visible;
 }
 
 .drawerHeader {
@@ -116,13 +148,6 @@
     font-weight: 600;
     font-size: 0.9rem;
     letter-spacing: 0.08em;
-}
-
-/* Tablet */
-@media (max-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
 }
 
 /* Mobile */
@@ -155,17 +180,12 @@
         display: none;
     }
 
-    /* FILTER button styled like the screenshot */
-    .filterToggle {
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.85rem;
-        letter-spacing: 0.08em;
+    .filterToggleDesktop {
+        display: none;
     }
 
-    /* Hide the old standalone mobile filter button */
-    .mobileFilterBtn {
-        display: none;
+    .filterToggleMobile {
+        display: flex;
     }
 
     .content {

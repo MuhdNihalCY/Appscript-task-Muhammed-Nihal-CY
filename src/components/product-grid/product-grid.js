@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "@/components/product-card/product-card";
 import FilterSidebar from "@/components/filter-sidebar/filter-sidebar";
 import styles from "./product-grid.module.css";
@@ -19,6 +19,10 @@ export default function ProductGrid({ products }) {
     const [showSortMenu, setShowSortMenu] = useState(false);
     const [showMobileFilter, setShowMobileFilter] = useState(false);
 
+    useEffect(() => {
+        if (window.innerWidth <= 768) setShowFilter(false);
+    }, []);
+
     const sorted = [...products].sort((a, b) => {
         if (sortBy === "PRICE: HIGH TO LOW") return b.price - a.price;
         if (sortBy === "PRICE: LOW TO HIGH") return a.price - b.price;
@@ -31,17 +35,23 @@ export default function ProductGrid({ products }) {
             <div className={styles.toolbar}>
                 <div className={styles.toolbarLeft}>
                     <span className={styles.count}>{products.length} ITEMS</span>
+                    {/* Desktop only */}
                     <button
-                        className={styles.filterToggle}
-                        onClick={() => {
-                            setShowFilter(!showFilter);
-                            setShowMobileFilter(!showMobileFilter);
-                        }}
+                        className={styles.filterToggleDesktop}
+                        onClick={() => setShowFilter(prev => !prev)}
                     >
                         {showFilter
-                            ? <><span className={styles.filterSymbol}>{"< "}</span><span className={styles.filterText}>HIDE FILTER</span></>
-                            : <><span className={styles.filterSymbol}>{"> "}</span><span className={styles.filterText}>SHOW FILTER</span></>
+                            ? <><span className={styles.filterSymbol}>{"<"}</span><span className={styles.filterText}>HIDE FILTER</span></>
+                            : <><span className={styles.filterSymbol}>{">"}</span><span className={styles.filterText}>SHOW FILTER</span></>
                         }
+                    </button>
+
+                    {/* Mobile only */}
+                    <button
+                        className={styles.filterToggleMobile}
+                        onClick={() => setShowMobileFilter(prev => !prev)}
+                    >
+                        FILTER
                     </button>
                 </div>
 
@@ -75,35 +85,23 @@ export default function ProductGrid({ products }) {
                     </div>
                 </div>
             </div>
-            <div className={styles.mobileFilterBtn}>
-                <button onClick={() => setShowMobileFilter(!showMobileFilter)}>
-                    ☰ FILTER
-                </button>
-            </div>
-
             {/* Content */}
             <div className={styles.content}>
                 {/* Desktop filter */}
-                {showFilter && (
-                    <div className={styles.desktopFilter}>
-                        <FilterSidebar />
-                    </div>
-                )}
+                <div className={`${styles.desktopFilter} ${showFilter ? styles.desktopFilterOpen : ""}`}>
+                    <FilterSidebar isMobile={false} />
+                </div>
 
                 {/* Mobile filter drawer */}
-                {showMobileFilter && (
-                    <div className={styles.mobileDrawer}>
-                        <div className={styles.drawerHeader}>
-                            <span>FILTER</span>
-                            <button onClick={() => setShowMobileFilter(false)}>
-                                ✕
-                            </button>
-                        </div>
-                        <FilterSidebar />
+                <div className={`${styles.mobileDrawer} ${showMobileFilter ? styles.mobileDrawerOpen : ""}`}>
+                    <div className={styles.drawerHeader}>
+                        <span>FILTER</span>
+                        <button onClick={() => setShowMobileFilter(false)}>✕</button>
                     </div>
-                )}
+                    <FilterSidebar isMobile={true} />
+                </div>
 
-                <div className={styles.grid}>
+                <div className={`${styles.grid} ${!showFilter ? styles.gridExpanded : ""}`}>
                     {sorted.map((product, index) => (
                         <ProductCard
                             key={product.id}

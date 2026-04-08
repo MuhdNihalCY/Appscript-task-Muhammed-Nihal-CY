@@ -57,9 +57,12 @@ function FilterGroup({ label, options }) {
     );
 }
 
-export default function FilterSidebar() {
+export default function FilterSidebar({ isMobile = false }) {
     return (
-        <aside className={styles.sidebar} aria-label="Product filters">
+        <aside
+            className={`${styles.sidebar} ${isMobile ? styles.sidebarMobile : styles.sidebarDesktop}`}
+            aria-label="Product filters"
+        >
             {FILTERS.map((f) => (
                 <FilterGroup
                     key={f.label}

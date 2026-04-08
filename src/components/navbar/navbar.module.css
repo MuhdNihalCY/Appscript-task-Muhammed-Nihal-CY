@@ -93,13 +93,12 @@
 }
 
 .breadcrumbItemMuted {
-    font-weight: 500;
-    margin: 0 0.5rem;
-    color: var(--color-border);
-}
-
-.breadcrumbItem {
+    margin-right: 0.5rem;
     color: var(--color-muted);
+  }
+  
+  .breadcrumbItem {
+    color: var(--color-border);
 }
 
 

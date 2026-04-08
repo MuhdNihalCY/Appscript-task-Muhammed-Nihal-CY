@@ -1,0 +1,99 @@
+.wrapper {
+  padding: 1rem 2rem;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1rem;
+}
+
+.count {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.filterToggle {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-decoration: underline;
+}
+
+.sortWrapper {
+  position: relative;
+}
+
+.sortBtn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.sortMenu {
+  position: absolute;
+  right: 0;
+  top: 2rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  list-style: none;
+  min-width: 180px;
+  z-index: 10;
+}
+
+.sortMenu li {
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.sortMenu li:hover {
+  background: #f5f5f5;
+}
+
+.sortMenu li.active {
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  gap: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  flex: 1;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 1rem;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

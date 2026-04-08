@@ -1,4 +1,6 @@
+import Navbar from '@/components/navbar/navbar';
 import './globals.css';
+import Footer from '@/components/footer/footer';
 
 export const metadata = {
   title: 'Shop | My Commerce',
@@ -34,7 +36,11 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

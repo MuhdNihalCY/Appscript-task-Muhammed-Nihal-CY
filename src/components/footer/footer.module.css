@@ -37,7 +37,7 @@
     padding: 0.75rem 1rem;
     background: var(--color-footer-text);
     border: 1px solid #555;
-    color: var(--color-footer-text);
+    color: var(--color-footer-bg);
     font-size: 0.8rem;
     outline: none;
 }
@@ -163,7 +163,9 @@
 
 /* Accordion body always visible on desktop */
 .accordionBody {
-    display: block;
+    display: grid;
+    grid-template-rows: 1fr;
+    overflow: hidden;
 }
 
 .arrowDown {
@@ -302,12 +304,21 @@
 
     /* Accordion body hidden by default on mobile */
     .accordionBody {
-        display: none;
-        padding-bottom: 0.85rem;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.3s ease;
+    }
+
+    .accordionBody > * {
+        min-height: 0;
+        overflow: hidden;
     }
 
     .accordionBody.open {
-        display: block;
+        grid-template-rows: 1fr;
+    }
+
+    .accordionBody.open > * {
+        padding-bottom: 0.85rem;
     }
     .accepts {
         border: none;

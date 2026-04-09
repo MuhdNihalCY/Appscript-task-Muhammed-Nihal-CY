@@ -60,9 +60,8 @@ function FilterGroup({ label, options }) {
                     {allSelected ? "All" : selected.join(", ")}
                 </p>
             )}
-            {open && (
+            <div className={`${styles.optionsWrapper} ${open ? styles.optionsOpen : ""}`}>
                 <ul className={styles.options}>
-                    {/* All — no checkbox, click selects all */}
                     <li>
                         <button
                             className={`${styles.allBtn} ${allSelected ? styles.optionSelected : styles.optionMuted}`}
@@ -72,7 +71,6 @@ function FilterGroup({ label, options }) {
                         </button>
                     </li>
 
-                    {/* Unselect all — only visible when something is selected */}
                     {selected.length > 0 && (
                         <li>
                             <button
@@ -84,7 +82,6 @@ function FilterGroup({ label, options }) {
                         </li>
                     )}
 
-                    {/* Individual options with checkboxes */}
                     {options.map((opt) => (
                         <li key={opt}>
                             <label className={styles.optionLabel}>
@@ -101,7 +98,7 @@ function FilterGroup({ label, options }) {
                         </li>
                     ))}
                 </ul>
-            )}
+            </div>
         </div>
     );
 }

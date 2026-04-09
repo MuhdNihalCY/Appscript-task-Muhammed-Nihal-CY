@@ -222,13 +222,25 @@
         gap: 0.75rem;
     }
 
-    /* Nav links: full-width dropdown */
+    /* Nav links: animated full-width dropdown */
+    .navLinksWrapper {
+        display: grid;
+        grid-template-rows: 0fr;
+        overflow: hidden;
+        transition: grid-template-rows 0.3s ease;
+        width: 100%;
+    }
+
+    .navLinksOpen {
+        grid-template-rows: 1fr;
+    }
+
     .navLinks {
-        display: none;
+        display: flex;
         flex-direction: column;
         gap: 0;
         width: 100%;
-        margin-top: 0.5rem;
+        min-height: 0;
         border-top: 1px solid var(--color-border);
     }
 
@@ -239,10 +251,6 @@
     .navLinks li a {
         display: block;
         padding: 0.85rem 0;
-    }
-
-    .navLinks.open {
-        display: flex;
     }
 
     .langSwitcher, .acProfileBtn {

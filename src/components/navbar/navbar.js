@@ -90,9 +90,8 @@ export default function Navbar() {
                 </div>
 
                 {/* Desktop nav links */}
-                <ul
-                    className={`${styles.navLinks} ${menuOpen ? styles.open : ""}`}
-                >
+                <div className={`${styles.navLinksWrapper} ${menuOpen ? styles.navLinksOpen : ""}`}>
+                <ul className={styles.navLinks}>
                     <li>
                         <Link href="#">SHOP</Link>
                     </li>
@@ -109,6 +108,7 @@ export default function Navbar() {
                         <Link href="#">CONTACT US</Link>
                     </li>
                 </ul>
+                </div>
             </nav>
 
             {/* Breadcrumb */}

@@ -35,7 +35,7 @@ function Accordion({ title, children }) {
                 <span className={styles.toggle}> <Image src={arrowDown} alt="Arrow up" width={12} height={12} className={ open ? styles.arrowUp : styles.arrowDown } /></span>
             </button>
             <div className={`${styles.accordionBody} ${open ? styles.open : ""}`}>
-                {children}
+                <div>{children}</div>
             </div>
         </div>
     );

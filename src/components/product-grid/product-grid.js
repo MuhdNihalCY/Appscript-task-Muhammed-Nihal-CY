@@ -94,23 +94,25 @@ export default function ProductGrid({ products }) {
                             {sortBy}  <span className={styles.toggle}> <Image src={arrowDown} alt="Arrow up" width={12} height={12} className={ showSortMenu ? styles.arrowUp : styles.arrowDown } /></span>
 
                         </button>
-                        {showSortMenu && (
-                            <ul className={styles.sortMenu} role="listbox" aria-label="Sort options">
-                                {SORT_OPTIONS.map((opt) => (
-                                    <li
-                                        key={opt}
-                                        role="option"
-                                        aria-selected={opt === sortBy}
-                                        tabIndex={0}
-                                        className={opt === sortBy ? styles.active : ""}
-                                        onClick={() => handleSortSelect(opt)}
-                                        onKeyDown={(e) => handleSortKeyDown(e, opt)}
-                                    >
-                                        {opt}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
+                        <ul
+                            className={`${styles.sortMenu} ${showSortMenu ? styles.sortMenuVisible : ""}`}
+                            role="listbox"
+                            aria-label="Sort options"
+                        >
+                            {SORT_OPTIONS.map((opt) => (
+                                <li
+                                    key={opt}
+                                    role="option"
+                                    aria-selected={opt === sortBy}
+                                    tabIndex={showSortMenu ? 0 : -1}
+                                    className={opt === sortBy ? styles.active : ""}
+                                    onClick={() => handleSortSelect(opt)}
+                                    onKeyDown={(e) => handleSortKeyDown(e, opt)}
+                                >
+                                    {opt}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>

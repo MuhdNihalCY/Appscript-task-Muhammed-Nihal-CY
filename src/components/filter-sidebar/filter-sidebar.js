@@ -54,7 +54,6 @@ function FilterGroup({ label, options }) {
             >
                 <span>{label}</span>
                 <span className={styles.chevron}><span className={styles.toggle}> <Image src={arrowDown} alt="Arrow up" width={12} height={12} className={ open ? styles.arrowUp : styles.arrowDown } /></span></span>
-                {/* <span className={styles.chevron}>{open ? "∧" : "∨"}</span> */}
             </button>
             {!open && selected.length > 0 && (
                 <p className={styles.collapsedSummary}>

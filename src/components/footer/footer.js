@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./footer.module.css";
 
 const usFlag = "/assets/United States of America (US).png";
@@ -107,7 +108,7 @@ export default function Footer() {
                     <Accordion title="mettā muse">
                         <ul className={styles.linkList}>
                             {METTA_LINKS.map((link) => (
-                                <li key={`metta-${link}`}><a href="#">{link}</a></li>
+                                <li key={`metta-${link}`}><Link href="#">{link}</Link></li>
                             ))}
                         </ul>
                     </Accordion>
@@ -115,19 +116,19 @@ export default function Footer() {
                     <Accordion title="QUICK LINKS">
                         <ul className={styles.linkList}>
                             {QUICK_LINKS.map((link) => (
-                                <li key={`quick-${link}`}><a href="#">{link}</a></li>
+                                <li key={`quick-${link}`}><Link href="#">{link}</Link></li>
                             ))}
                         </ul>
                     </Accordion>
 
                     <Accordion title="FOLLOW US">
                         <div className={styles.socialIcons}>
-                            <a href="#" aria-label="Instagram">
+                            <Link href="#" aria-label="Instagram">
                                 <Image src={instaIcon} alt="Instagram" width={32} height={32} />
-                            </a>
-                            <a href="#" aria-label="LinkedIn">
+                            </Link>
+                            <Link href="#" aria-label="LinkedIn">
                                 <Image src={linkedinIcon} alt="LinkedIn" width={32} height={32} />
-                            </a>
+                            </Link>
                         </div>
                     </Accordion>
                 </div>

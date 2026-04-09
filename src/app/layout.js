@@ -3,6 +3,23 @@ import { Inter, DM_Sans } from "next/font/google";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
 
+const inter = Inter({
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-inter",
+});
+
+const dmSans = DM_Sans({
+    subsets: ["latin"],
+    display: "swap",
+    variable: "--font-dm-sans",
+});
+
+export const viewport = {
+    width: "device-width",
+    initialScale: 1,
+};
+
 export const metadata = {
     title: "Shop | Metta Muse — Sustainable Handcrafted Products",
     description:
@@ -27,29 +44,29 @@ export const metadata = {
     },
 };
 
-export default function RootLayout({ children }) {
-    const schema = {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        name: "Shop | Metta Muse",
-        description: "Discover our curated collection of sustainable products.",
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Shop | Metta Muse",
+    description: "Discover our curated collection of sustainable products.",
+    url: "https://appscrip-task-nihal.netlify.app",
+    publisher: {
+        "@type": "Organization",
+        name: "Metta Muse",
         url: "https://appscrip-task-nihal.netlify.app",
-        publisher: {
-            "@type": "Organization",
-            name: "Metta Muse",
-            url: "https://appscrip-task-nihal.netlify.app",
-        },
-    };
+    },
+};
 
+export default function RootLayout({ children }) {
     return (
-        <html lang="en" >
+        <html lang="en">
             <head>
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <script type="application/ld+json">
-                    {JSON.stringify(schema)}
-                </script>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+                />
             </head>
-            <body>
+            <body className={`${inter.variable} ${dmSans.variable}`}>
                 <Navbar />
                 {children}
                 <Footer />

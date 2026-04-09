@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./product-card.module.css";
 
 const heart = "/assets/heart.png";
@@ -20,7 +21,6 @@ export default function ProductCard({ product, priority = false }) {
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 33vw"
                     className={styles.image}
                     priority={priority}
-                    loading={priority ? "eager" : "lazy"}
                 />
             </div>
 
@@ -45,8 +45,8 @@ export default function ProductCard({ product, priority = false }) {
                     </button>
                 </div>
                 <p className={styles.pricing}>
-                    <a href="/login">Sign in</a> or{" "}
-                    <a href="/register">Create an account</a> to see pricing
+                    <Link href="/login">Sign in</Link> or{" "}
+                    <Link href="/register">Create an account</Link> to see pricing
                 </p>
             </div>
         </article>

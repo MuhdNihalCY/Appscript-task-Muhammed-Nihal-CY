@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./navbar.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 const logo = "/assets/logo.png";
 const profile = "/assets/profile.png";
@@ -38,13 +39,13 @@ export default function Navbar() {
                         <Image src={hamburger} width={24} height={24} alt="Hamburger" />
                     </button>
                     <div className={styles.logoContainer}>
-                        <a href="/" className={styles.logo}>
+                        <Link href="/" className={styles.logo}>
                             <Image src={logo} alt="Metta Muse" width={30} height={30} />
-                        </a>
+                        </Link>
                     </div>
-                    <a href="/" className={`${styles.logo} ${styles.logoText}`}>
+                    <Link href="/" className={`${styles.logo} ${styles.logoText}`}>
                         LOGO
-                    </a>
+                    </Link>
                     <div className={styles.icons}>
                         <button aria-label="Search">
                             <Image src={search} width={20} height={20} alt="Search" />
@@ -93,19 +94,19 @@ export default function Navbar() {
                     className={`${styles.navLinks} ${menuOpen ? styles.open : ""}`}
                 >
                     <li>
-                        <a href="#">SHOP</a>
+                        <Link href="#">SHOP</Link>
                     </li>
                     <li>
-                        <a href="#">SKILLS</a>
+                        <Link href="#">SKILLS</Link>
                     </li>
                     <li>
-                        <a href="#">STORIES</a>
+                        <Link href="#">STORIES</Link>
                     </li>
                     <li>
-                        <a href="#">ABOUT</a>
+                        <Link href="#">ABOUT</Link>
                     </li>
                     <li>
-                        <a href="#">CONTACT US</a>
+                        <Link href="#">CONTACT US</Link>
                     </li>
                 </ul>
             </nav>
@@ -113,7 +114,7 @@ export default function Navbar() {
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className={`${styles.breadcrumb} container`}>
                 <ol className={styles.breadcrumbList}>
-                    <li><a href="/" className={styles.breadcrumbItemMuted}>HOME</a></li>
+                    <li><Link href="/" className={styles.breadcrumbItemMuted}>HOME</Link></li>
                     <li aria-hidden="true" className={styles.breadcrumbItemMuted}> | </li>
                     <li><span className={styles.breadcrumbItem} aria-current="page">SHOP</span></li>
                 </ol>

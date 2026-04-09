@@ -17,8 +17,7 @@
     --color-footer-text: #fff;
     --font-primary: Georgia, serif;
     --font-secondary: "Helvetica Neue", Arial, sans-serif;
-    --font-tertiary: "Inter", sans-serif;
-    --font-dm-sans: "DM Sans", sans-serif;
+    --font-tertiary: var(--font-inter, "Inter", sans-serif);
 }
 
 body {

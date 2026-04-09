@@ -13,8 +13,12 @@ const squares = "/assets/squares.png";
 const hamburger = "/assets/hamburger.svg";
 
 
+const LANGUAGES = ["ENG", "DEU", "FRA", "ESP"];
+
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [lang, setLang] = useState("ENG");
+    const [langOpen, setLangOpen] = useState(false);
 
     return (
         <header className={styles.header}>
@@ -54,6 +58,33 @@ export default function Navbar() {
                         <button aria-label="Account">
                             <Image src={profile} width={20} height={20} alt="Account" />
                         </button>
+                        <div className={styles.langSwitcher}>
+                            <button
+                                className={styles.langBtn}
+                                onClick={() => setLangOpen(!langOpen)}
+                                aria-label="Select language"
+                                aria-expanded={langOpen}
+                            >
+                                {lang} <span className={styles.langChevron}>∨</span>
+                            </button>
+                            {langOpen && (
+                                <ul className={styles.langMenu} role="listbox" aria-label="Language options">
+                                    {LANGUAGES.map((l) => (
+                                        <li
+                                            key={l}
+                                            role="option"
+                                            aria-selected={l === lang}
+                                            className={l === lang ? styles.langActive : ""}
+                                            onClick={() => { setLang(l); setLangOpen(false); }}
+                                            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { setLang(l); setLangOpen(false); } }}
+                                            tabIndex={0}
+                                        >
+                                            {l}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
                     </div>
                 </div>
 

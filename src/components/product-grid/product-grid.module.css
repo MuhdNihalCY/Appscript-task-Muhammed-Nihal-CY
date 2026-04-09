@@ -55,11 +55,26 @@
     color: var(--color-border);
     font-family: var(--font-primary);
 }
+
+.arrowDown {
+    transition: transform 0.3s ease;
+    color: var(--color-primary);
+}
+
+.arrowUp {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+    color: var(--color-primary);
+}
+
 .sortWrapper {
     position: relative;
 }
 
 .sortBtn {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.05em;

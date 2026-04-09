@@ -245,6 +245,10 @@
         display: flex;
     }
 
+    .langSwitcher, .acProfileBtn {
+        display: none;
+    }
+
     .header {
         border-bottom: none;
     }

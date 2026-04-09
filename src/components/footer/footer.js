@@ -9,6 +9,8 @@ const usFlag = "/assets/United States of America (US).png";
 const paymentCards = "/assets/payment-cards.png";
 const instaIcon = "/assets/Insta.png";
 const linkedinIcon = "/assets/linkedin.png";
+const star = "/assets/star.svg";
+const arrowDown = "/assets/arrow-down.svg";
 
 const METTA_LINKS = [
     "About Us", "Stories", "Artisans", "Boutiques", "Contact Us", "EU Compliances Docs",
@@ -30,7 +32,7 @@ function Accordion({ title, children }) {
                 aria-expanded={open}
             >
                 <span>{title}</span>
-                <span className={styles.toggle}>{open ? "∧" : "∨"}</span>
+                <span className={styles.toggle}> <Image src={arrowDown} alt="Arrow up" width={12} height={12} className={ open ? styles.arrowUp : styles.arrowDown } /></span>
             </button>
             <div className={`${styles.accordionBody} ${open ? styles.open : ""}`}>
                 {children}
@@ -55,9 +57,7 @@ export default function Footer() {
                 <div className={styles.top}>
                     <div className={styles.newsletter}>
                         <h2 className={styles.sectionTitle}>BE THE FIRST TO KNOW</h2>
-                        <p className={styles.newsletterText}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. this is simply dummy text.
-                        </p>
+                        <p className={styles.newsletterText}>Sign up for updates from mettā muse.</p>
                         <form className={styles.form} onSubmit={handleSubscribe}>
                             <input
                                 type="email"
@@ -78,7 +78,13 @@ export default function Footer() {
                         <h2 className={styles.sectionTitle}>CALL US</h2>
                         <div className={styles.contactRow}>
                             <span className={styles.contactDetail}>+44 221 133 5360</span>
-                            <span className={styles.contactBullet}>•</span>
+                            <Image
+                                src={star}
+                                alt="star icon"
+                                width={8}
+                                height={8}
+                                className={`${styles.starIcon} ${styles.starIconMobile}`}
+                            />
                             <span className={styles.contactDetail}>customercare@mettamuse.com</span>
                         </div>
 
@@ -92,7 +98,14 @@ export default function Footer() {
                                     height={20}
                                     className={styles.flagIcon}
                                 />
-                                <span className={styles.currencyLabel}>· USD</span>
+                                <Image
+                                    src={star}
+                                    alt="star icon"
+                                    width={8}
+                                    height={8}
+                                    className={styles.starIcon}
+                                />
+                                <span className={styles.currencyLabel}> USD</span>
                             </div>
                             <p className={styles.currencyNote}>
                                 Transactions will be completed in Euros and a currency reference is available on hover.
@@ -130,19 +143,18 @@ export default function Footer() {
                                 <Image src={linkedinIcon} alt="LinkedIn" width={32} height={32} />
                             </Link>
                         </div>
+                        <div className={styles.accepts}>
+                            <p className={styles.acceptsTitle}>mettā muse ACCEPTS</p>
+                            <Image
+                                src={paymentCards}
+                                alt="Accepted payment methods: Google Pay, Mastercard, PayPal, Amex, Apple Pay, Shop Pay"
+                                width={240}
+                                height={32}
+                                className={styles.paymentImage}
+                            />
+                        </div>
                     </Accordion>
-                </div>
 
-                {/* Accepts — full width, below grid on both mobile and desktop */}
-                <div className={styles.accepts}>
-                    <p className={styles.acceptsTitle}>mettā muse ACCEPTS</p>
-                    <Image
-                        src={paymentCards}
-                        alt="Accepted payment methods: Google Pay, Mastercard, PayPal, Amex, Apple Pay, Shop Pay"
-                        width={240}
-                        height={32}
-                        className={styles.paymentImage}
-                    />
                 </div>
 
                 <div className={styles.copyright}>

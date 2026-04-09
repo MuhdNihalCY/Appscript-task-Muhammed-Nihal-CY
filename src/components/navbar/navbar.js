@@ -56,7 +56,7 @@ export default function Navbar() {
                         <button aria-label="Cart">
                             <Image src={cart} width={20} height={20} alt="Cart" />
                         </button>
-                        <button aria-label="Account">
+                        <button aria-label="Account" className={styles.acProfileBtn}>
                             <Image src={profile} width={20} height={20} alt="Account" />
                         </button>
                         <div className={styles.langSwitcher}>

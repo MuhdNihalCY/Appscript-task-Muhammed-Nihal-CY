@@ -22,7 +22,7 @@
 
 .newsletterText {
     font-size: 0.8rem;
-    color: #aaa;
+    color: var(--color-border);
     margin-bottom: 1.25rem;
     line-height: 1.6;
 }
@@ -49,8 +49,9 @@
 .subscribeBtn {
     padding: 0.75rem 1.25rem;
     background: transparent;
-    color: var(--color-footer-text);
-    border: 1px solid var(--color-footer-text);
+    color: #4c4c4c;
+    border: 1px solid #4c4c4c;
+    border-radius: .3rem;
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -65,21 +66,24 @@
 
 .contactRow {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
     gap: 0.5rem;
     margin-bottom: 0.4rem;
 }
 
 .contactDetail {
     font-size: 0.8rem;
-    color: #aaa;
+    color: var(--color-border);
 }
 
-.contactBullet {
+.starIcon {
+    margin: 0 0.25rem;
+    opacity: 0.6;
+}
+
+.starIconMobile {
     display: none;
-    font-size: 0.8rem;
-    color: #aaa;
 }
 
 /* Currency */
@@ -97,7 +101,7 @@
 .currencyRow {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.2rem;
     margin-bottom: 0.5rem;
 }
 
@@ -108,7 +112,7 @@
 
 .currencyLabel {
     font-size: 0.8rem;
-    color: #aaa;
+    color: var(--color-border);
 }
 
 .currencyNote {
@@ -162,6 +166,17 @@
     display: block;
 }
 
+.arrowDown {
+    transition: transform 0.3s ease;
+    color:transparent;
+}
+
+.arrowUp {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+    color:transparent;
+}
+
 .linkList {
     list-style: none;
     margin-top: 0.75rem;
@@ -172,7 +187,7 @@
 
 .linkList a {
     font-size: 0.78rem;
-    color: #aaa;
+    color: var(--color-border);
     transition: color 0.2s;
 }
 
@@ -200,7 +215,7 @@
 /* ── Accepts ── */
 .accepts {
     margin-top: 2rem;
-    border-top: 1px solid #333;
+    border-top: 1px solid var(--color-border);
     padding-top: 1.25rem;
 }
 
@@ -236,24 +251,30 @@
     /* Each top block gets a bottom border */
     .newsletter {
         padding-bottom: 1.5rem;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid var(--color-border);
         margin-bottom: 1.5rem;
     }
 
     /* Phone + email stacked or inline — wrap naturally */
     .contactRow {
         flex-direction: row;
-        align-items: flex-start;
+        align-items: center;
         gap: 0.25rem;
     }
 
-    .contactBullet {
+    .starIconMobile {
         display: inline;
     }
 
     /* Hide currency note on mobile */
     .currencyNote {
         display: none;
+    }
+
+    .currency {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-border);
     }
 
     .divider {
@@ -267,7 +288,7 @@
     }
 
     .section {
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid var(--color-border);
     }
 
     .sectionHeader {

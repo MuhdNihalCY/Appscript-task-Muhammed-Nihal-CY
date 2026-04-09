@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import styles from "./filter-sidebar.module.css";
+import Image from "next/image";
+
+const arrowDown = "/assets/arrow-down-bl.svg";
 
 const FILTERS = [
     { label: "CUSTOMIZABLE", options: [] },
@@ -17,7 +20,7 @@ const FILTERS = [
 
 function FilterGroup({ label, options }) {
     const [open, setOpen] = useState(false);
-    const [selected, setSelected] = useState([]);
+    const [selected, setSelected] = useState([...options]);
 
     if (options.length === 0) {
         return (
@@ -50,7 +53,8 @@ function FilterGroup({ label, options }) {
                 aria-expanded={open}
             >
                 <span>{label}</span>
-                <span className={styles.chevron}>{open ? "∧" : "∨"}</span>
+                <span className={styles.chevron}><span className={styles.toggle}> <Image src={arrowDown} alt="Arrow up" width={12} height={12} className={ open ? styles.arrowUp : styles.arrowDown } /></span></span>
+                {/* <span className={styles.chevron}>{open ? "∧" : "∨"}</span> */}
             </button>
             {!open && selected.length > 0 && (
                 <p className={styles.collapsedSummary}>

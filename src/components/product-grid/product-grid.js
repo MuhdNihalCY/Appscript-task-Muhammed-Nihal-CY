@@ -4,6 +4,9 @@ import { useState, useEffect, useMemo } from "react";
 import ProductCard from "@/components/product-card/product-card";
 import FilterSidebar from "@/components/filter-sidebar/filter-sidebar";
 import styles from "./product-grid.module.css";
+import Image from "next/image";
+
+const arrowDown = "/assets/arrow-down-bl.svg";
 
 const SORT_OPTIONS = [
     "RECOMMENDED",
@@ -88,7 +91,8 @@ export default function ProductGrid({ products }) {
                             aria-expanded={showSortMenu}
                             aria-haspopup="listbox"
                         >
-                            {sortBy} ▾
+                            {sortBy}  <span className={styles.toggle}> <Image src={arrowDown} alt="Arrow up" width={12} height={12} className={ showSortMenu ? styles.arrowUp : styles.arrowDown } /></span>
+
                         </button>
                         {showSortMenu && (
                             <ul className={styles.sortMenu} role="listbox" aria-label="Sort options">
